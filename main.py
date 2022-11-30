@@ -46,6 +46,12 @@ with left_column:
 
 left_column, right_column = st.columns(2)
 with left_column:
+    inp_House_Type = st.radio(
+        'Type of House',
+        np.unique(my_data['House_Type']))
+
+left_column, right_column = st.columns(2)
+with left_column:
     inp_Education = st.radio(
         'Education of the Applicant',
         np.unique(my_data['Education']))  
@@ -55,8 +61,8 @@ input_Family_Size = st.slider('Family Size:', 0, max(my_data["Family_Size"]), 0)
 input_Salary = st.slider('Salary of the Applicant:', 0.0, max(my_data["Salary"]), 0.0)
 input_AGE = st.slider('Age in Years:', 0.0, max(my_data["AGE"]), 0.0)
 input_EXPERIENCE = st.slider('Experience in Years:', 0.0, max(my_data["EXPERIENCE"]), 0.0)
-input_Height = st.slider('Height(cm)', 0.0, max(data["Height"]), 1.0)
-input_Width = st.slider('Diagonal width(cm)', 0.0, max(data["Width"]), 1.0)
+input_ACCOUNT_DURATION = st.slider('Account Duration in Months:', 0, max(data["ACCOUNT_DURATION"]), 0)
+
 
 
 if st.button('Make Prediction'):
