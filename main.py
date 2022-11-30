@@ -37,6 +37,12 @@ with left_column:
     inp_species = st.radio(
         'Does he own any Realty(properties):',
         np.unique(my_data['Realty']))
+    
+left_column, right_column = st.columns(2)
+with left_column:
+    inp_species = st.radio(
+        'Numer of Children:',
+        np.unique(my_data['Children']))
 
 input_Length1 = st.slider('Vertical length(cm)', 0.0, max(data["Length1"]), 1.0)
 input_Length2 = st.slider('Diagonal length(cm)', 0.0, max(data["Length2"]), 1.0)
