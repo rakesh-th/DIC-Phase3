@@ -22,49 +22,39 @@ if st.checkbox('Show Training Dataframe'):
 st.subheader("Please provide details of your application!")
 left_column, right_column = st.columns(2)
 with left_column:
-    inp_species = st.radio(
+    inp_Gender = st.radio(
         'Gender of the Person:',
         np.unique(my_data['Gender']))
  
 left_column, right_column = st.columns(2)
 with left_column:
-    inp_species = st.radio(
+    inp_Car = st.radio(
         'Does he own a Car:',
         np.unique(my_data['Car']))
 
 left_column, right_column = st.columns(2)
 with left_column:
-    inp_species = st.radio(
+    inp_Realty = st.radio(
         'Does he own any Realty(properties):',
         np.unique(my_data['Realty']))
-    
-left_column, right_column = st.columns(2)
-with left_column:
-    inp_species = st.radio(
-        'Numer of Children:',
-        np.unique(my_data['Children']))
 
 left_column, right_column = st.columns(2)
 with left_column:
-    inp_species = st.radio(
-        'Family Size:',
-        np.unique(my_data['Family_Size']))
-
-left_column, right_column = st.columns(2)
-with left_column:
-    inp_species = st.radio(
+    inp_Income_Type = st.radio(
         'Type of Income',
         np.unique(my_data['Income_Type']))   
 
 left_column, right_column = st.columns(2)
 with left_column:
-    inp_species = st.radio(
+    inp_Education = st.radio(
         'Education of the Applicant',
         np.unique(my_data['Education']))  
 
-input_Length1 = st.slider('Salary of the Applicant:', 0.0, max(my_data["Salary"]), 0.0)
-input_Length2 = st.slider('Age in Years:', 0.0, max(my_data["AGE"]), 0.0)
-input_Length3 = st.slider('Experience in Years:', 0.0, max(my_data["EXPERIENCE"]), 0.0)
+input_Children = st.slider('Number of Children:', 0, max(my_data["Children"]), 0)
+input_Family_Size = st.slider('Family Size:', 0, max(my_data["Family_Size"]), 0)
+input_Salary = st.slider('Salary of the Applicant:', 0.0, max(my_data["Salary"]), 0.0)
+input_AGE = st.slider('Age in Years:', 0.0, max(my_data["AGE"]), 0.0)
+input_EXPERIENCE = st.slider('Experience in Years:', 0.0, max(my_data["EXPERIENCE"]), 0.0)
 input_Height = st.slider('Height(cm)', 0.0, max(data["Height"]), 1.0)
 input_Width = st.slider('Diagonal width(cm)', 0.0, max(data["Width"]), 1.0)
 
@@ -79,6 +69,3 @@ if st.button('Make Prediction'):
 
     st.write(f"Thank you {st.session_state.name}! I hope you liked it.")
     st.write(f"If you want to see more advanced applications you can follow me on [medium](https://medium.com/@gkeretchashvili)")
-
-
-
