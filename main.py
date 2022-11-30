@@ -17,7 +17,7 @@ best_xgboost_model = xgb.XGBRegressor()
 best_xgboost_model.load_model("best_model.json")
 
 if st.checkbox('Show Training Dataframe'):
-    data
+    my_data
 
 st.subheader("Please provide details of your application!")
 left_column, right_column = st.columns(2)
