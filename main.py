@@ -9,8 +9,8 @@ st.text_input("Enter your Name: ", key="name")
 my_data = pd.read_csv("final_application.csv")
 
 # load model
-best_xgboost_model = XGBClassifier()
-best_xgboost_model.load_model("best_model.json")
+#best_xgboost_model = XGBClassifier()
+#best_xgboost_model.load_model("best_model.json")
 
 if st.checkbox('Show Training Dataframe'):
     my_data
