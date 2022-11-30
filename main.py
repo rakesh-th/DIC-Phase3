@@ -6,7 +6,7 @@ import xgboost as xgb
 import numpy as np
 st.header("Credit Card Approval Prediction")
 st.text_input("Enter your Name: ", key="name")
-data = pd.read_csv("https://raw.githubusercontent.com/gurokeretcha/WishWeightPredictionApplication/master/Fish.csv")
+data = pd.read_csv("final_application.csv")
 #load label encoder
 encoder = LabelEncoder()
 encoder.classes_ = np.load('classes.npy',allow_pickle=True)
@@ -18,13 +18,18 @@ best_xgboost_model.load_model("best_model.json")
 if st.checkbox('Show Training Dataframe'):
     data
 
-st.subheader("Please select relevant features of your fish!")
+st.subheader("Please provide details of your application!")
 left_column, right_column = st.columns(2)
 with left_column:
     inp_species = st.radio(
         'Name of the fish:',
         np.unique(data['Species']))
 
+left_column, right_column = st.columns(2)
+with left_column:
+    inp_species = st.radio(
+        'Gender:',
+        np.unique(data['Species']))
 
 input_Length1 = st.slider('Vertical length(cm)', 0.0, max(data["Length1"]), 1.0)
 input_Length2 = st.slider('Diagonal length(cm)', 0.0, max(data["Length2"]), 1.0)
