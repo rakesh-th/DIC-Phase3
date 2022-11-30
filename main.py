@@ -61,7 +61,7 @@ input_Family_Size = st.slider('Family Size:', 0, max(my_data["Family_Size"]), 0)
 input_Salary = st.slider('Salary of the Applicant:', 0.0, max(my_data["Salary"]), 0.0)
 input_AGE = st.slider('Age in Years:', 0.0, max(my_data["AGE"]), 0.0)
 input_EXPERIENCE = st.slider('Experience in Years:', 0.0, max(my_data["EXPERIENCE"]), 0.0)
-input_ACCOUNT_DURATION = st.slider('Account Duration in Months:', 0, max(data["ACCOUNT_DURATION"]), 0)
+input_ACCOUNT_DURATION = st.slider('Account Duration in Months:', 0, max(my_data["ACCOUNT_DURATION"]), 0)
 
 
 
