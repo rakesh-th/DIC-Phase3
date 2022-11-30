@@ -6,6 +6,7 @@ import xgboost as xgb
 import numpy as np
 st.header("Credit Card Approval Prediction")
 st.text_input("Enter your Name: ", key="name")
+my_data = pd.read_csv("final_application.csv")
 data = pd.read_csv("https://raw.githubusercontent.com/gurokeretcha/WishWeightPredictionApplication/master/Fish.csv")
 #load label encoder
 encoder = LabelEncoder()
@@ -23,7 +24,7 @@ left_column, right_column = st.columns(2)
 with left_column:
     inp_species = st.radio(
         'Name of the fish:',
-        np.unique(data['Species']))
+        np.unique(my_data['Gender']))
 
 left_column, right_column = st.columns(2)
 with left_column:
