@@ -64,12 +64,12 @@ with left_column:
         'Education of the Applicant',
         np.unique(my_data['Education']))  
 
-input_Children = st.slider('Number of Children:', 0, max(my_data["Children"]), 2)
-input_Family_Size = st.slider('Family Size:', 0, max(my_data["Family_Size"]), 3)
-input_Salary = st.slider('Salary of the Applicant:', 0.0, max(my_data["Salary"]), 10000.0)
-input_AGE = st.slider('Age in Years:', 0.0, max(my_data["AGE"]), 22.0)
-input_EXPERIENCE = st.slider('Experience in Years:', 0.0, max(my_data["EXPERIENCE"]), 3.0)
-input_ACCOUNT_DURATION = st.slider('Account Duration in Months:', 0, max(my_data["ACCOUNT_DURATION"]), 5)
+input_Children = st.slider('Number of Children:', 0, max(my_data["Children"]), 3)
+input_Family_Size = st.slider('Family Size:', 0, max(my_data["Family_Size"]), 4)
+input_Salary = st.slider('Salary of the Applicant:', 0.0, max(my_data["Salary"]), 85000.0)
+input_AGE = st.slider('Age in Years:', 0.0, max(my_data["AGE"]), 22.8)
+input_EXPERIENCE = st.slider('Experience in Years:', 0.0, max(my_data["EXPERIENCE"]), 7.5)
+input_ACCOUNT_DURATION = st.slider('Account Duration in Months:', 0, max(my_data["ACCOUNT_DURATION"]), 18)
 
 
 X = my_data.drop(['ID', 'Risk', 'Occupation_Type'], axis=1)
