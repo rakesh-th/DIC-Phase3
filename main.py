@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import  LabelEncoder
 import xgboost as xgb
 import numpy as np
-st.header("Fish Weight Prediction App")
+st.header("Credit Card Approval Prediction")
 st.text_input("Enter your Name: ", key="name")
 data = pd.read_csv("https://raw.githubusercontent.com/gurokeretcha/WishWeightPredictionApplication/master/Fish.csv")
 #load label encoder
