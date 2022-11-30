@@ -37,7 +37,7 @@ with left_column:
 left_column, right_column = st.columns(2)
 with left_column:
     inp_Family_Status = st.radio(
-        'Does he own any Realty(properties):',
+        'Single/Married:',
         np.unique(my_data['Family_Status']))
 
 left_column, right_column = st.columns(2)
