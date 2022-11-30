@@ -44,9 +44,27 @@ with left_column:
         'Numer of Children:',
         np.unique(my_data['Children']))
 
-input_Length1 = st.slider('Salary of the Applicant:', 0.0, max(my_data["Salary"]), 1.0)
-input_Length2 = st.slider('Age in Years:', 0.0, max(my_data["AGE"]), 1.0)
-input_Length3 = st.slider('Experience in Years:', 0.0, max(my_data["EXPERIENCE"]), 1.0)
+left_column, right_column = st.columns(2)
+with left_column:
+    inp_species = st.radio(
+        'Family Size:',
+        np.unique(my_data['Family_Size']))
+
+left_column, right_column = st.columns(2)
+with left_column:
+    inp_species = st.radio(
+        'Type of Income',
+        np.unique(my_data['Income_Type']))   
+
+left_column, right_column = st.columns(2)
+with left_column:
+    inp_species = st.radio(
+        'Education of the Applicant',
+        np.unique(my_data['Education']))  
+
+input_Length1 = st.slider('Salary of the Applicant:', 0.0, max(my_data["Salary"]), 0.0)
+input_Length2 = st.slider('Age in Years:', 0.0, max(my_data["AGE"]), 0.0)
+input_Length3 = st.slider('Experience in Years:', 0.0, max(my_data["EXPERIENCE"]), 0.0)
 input_Height = st.slider('Height(cm)', 0.0, max(data["Height"]), 1.0)
 input_Width = st.slider('Diagonal width(cm)', 0.0, max(data["Width"]), 1.0)
 
