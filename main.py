@@ -1,9 +1,15 @@
 import streamlit as st
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import  LabelEncoder
-from xgboost import XGBClassifier
+import seaborn as sns
+import matplotlib.pyplot as plt
 import numpy as np
+
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+from imblearn.over_sampling import SMOTE, ADASYN
+from sklearn.metrics import *
+from xgboost import XGBClassifier
+
 st.header("Credit Card Approval Prediction")
 st.text_input("Enter your Name: ", key="name")
 my_data = pd.read_csv("final_application.csv")
@@ -66,6 +72,20 @@ input_EXPERIENCE = st.slider('Experience in Years:', 0.0, max(my_data["EXPERIENC
 input_ACCOUNT_DURATION = st.slider('Account Duration in Months:', 0, max(my_data["ACCOUNT_DURATION"]), 0)
 
 
+X = my_data.drop(['ID', 'Risk', 'Occupation_Type'], axis=1)
+y = my_data['Risk']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 123)
+
+smote = ADASYN()
+X_train,y_train = smote.fit_resample(X_train,y_train)
+
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+best_xgboost_model = XGBClassifier(max_depth=5,n_estimators=250, min_child_weight=8)
+best_xgboost_model.fit(X_train, y_train)
 
 if st.button('Make Prediction'):
     inputs = [int(123), inp_Gender, inp_Car, inp_Realty, input_Children, input_Salary, inp_Income_Type, inp_Education, inp_Family_Status, inp_House_Type, input_AGE, input_EXPERIENCE, input_Family_Size, input_ACCOUNT_DURATION]
