@@ -88,7 +88,7 @@ best_xgboost_model = XGBClassifier(max_depth=5,n_estimators=250, min_child_weigh
 best_xgboost_model.fit(X_train, y_train)
 
 if st.button('Make Prediction'):
-    inputs = [inp_Gender, inp_Car, inp_Realty, input_Children, input_Salary, inp_Income_Type, inp_Education, inp_Family_Status, inp_House_Type, input_AGE, input_EXPERIENCE, input_Family_Size, input_ACCOUNT_DURATION]
+    inputs = np.expand_dims([inp_Gender, inp_Car, inp_Realty, input_Children, input_Salary, inp_Income_Type, inp_Education, inp_Family_Status, inp_House_Type, input_AGE, input_EXPERIENCE, input_Family_Size, input_ACCOUNT_DURATION],0)
     prediction = best_xgboost_model.predict(inputs)
     if prediction:
         st.write("Your Credit Card is Declined")
