@@ -6,7 +6,7 @@ import numpy as np
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
-from imblearn.over_sampling import ADASYN
+#from imblearn.over_sampling import ADASYN
 from sklearn.metrics import *
 from xgboost import XGBClassifier
 
@@ -77,8 +77,8 @@ y = my_data['Risk']
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 123)
 
-adasyn = ADASYN()
-X_train,y_train = adasyn.fit_resample(X_train,y_train)
+#adasyn = ADASYN()
+#X_train,y_train = adasyn.fit_resample(X_train,y_train)
 
 scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
