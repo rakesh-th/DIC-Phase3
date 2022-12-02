@@ -15,10 +15,6 @@ st.header("Credit Card Approval Prediction")
 st.text_input("Enter your Name: ", key="name")
 my_data = pd.read_csv("application.csv")
 
-# load model
-#best_xgboost_model = XGBClassifier()
-#best_xgboost_model.load_model("best_model.json")
-
 if st.checkbox('Show Training Dataframe'):
     my_data
 
@@ -72,34 +68,10 @@ input_AGE = st.slider('Age of the applicant in Years:', 0.0, max(my_data["AGE"])
 input_EXPERIENCE = st.slider('Experience of the applicant in Years:', 0.0, max(my_data["EXPERIENCE"]), 7.5)
 input_ACCOUNT_DURATION = st.slider('Account Duration with the bank in Months:', 0, max(my_data["ACCOUNT_DURATION"]), 18)
 
-le1=LabelEncoder()
-le2=LabelEncoder()
-le3=LabelEncoder()
-le4=LabelEncoder()
-my_data['Income_Type']=le1.fit_transform(my_data['Income_Type'].values)
-le1.classes_
-my_data['Family_Status']=le2.fit_transform(my_data['Family_Status'].values)
-le2.classes_
-my_data['House_Type']=le3.fit_transform(my_data['House_Type'].values)
-le3.classes_
-my_data['Education']=le4.fit_transform(my_data['Education'].values)
-le4.classes_
 
-
-X = my_data.drop(['ID', 'Risk', 'Occupation_Type'], axis=1)
-y = my_data['Risk']
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 123)
-
-#adasyn = ADASYN()
-#X_train,y_train = adasyn.fit_resample(X_train,y_train)
-
-scaler = StandardScaler()
-X_train = scaler.fit_transform(X_train)
-X_test = scaler.transform(X_test)
-
-best_xgboost_model = XGBClassifier(max_depth=5,n_estimators=250, min_child_weight=8)
-best_xgboost_model.fit(X_train, y_train)
+# load model
+best_xgboost_model = XGBClassifier()
+best_xgboost_model.load_model("best_model.json")
 
 if st.button('Make Prediction'):
     inputs = np.expand_dims([inp_Gender, inp_Car, inp_Realty, input_Children, input_Salary, inp_Income_Type, inp_Education, inp_Family_Status, inp_House_Type, input_AGE, input_EXPERIENCE, input_Family_Size, input_ACCOUNT_DURATION],0)
