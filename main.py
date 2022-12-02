@@ -70,8 +70,22 @@ input_ACCOUNT_DURATION = st.slider('Account Duration with the bank in Months:', 
 
 
 # load model
-best_xgboost_model = XGBClassifier()
-best_xgboost_model.load_model("best_model.json")
+#best_xgboost_model = XGBClassifier()
+#best_xgboost_model.load_model("best_model.json")
+
+le1=LabelEncoder()
+le2=LabelEncoder()
+le3=LabelEncoder()
+le4=LabelEncoder()
+my_data['Income_Type']=le1.fit_transform(my_data['Income_Type'].values)
+le1.classes_
+my_data['Family_Status']=le2.fit_transform(my_data['Family_Status'].values)
+le2.classes_
+my_data['House_Type']=le3.fit_transform(my_data['House_Type'].values)
+le3.classes_
+my_data['Education']=le4.fit_transform(my_data['Education'].values)
+le4.classes_
+
 
 if st.button('Make Prediction'):
     inputs = np.expand_dims([inp_Gender, inp_Car, inp_Realty, input_Children, input_Salary, inp_Income_Type, inp_Education, inp_Family_Status, inp_House_Type, input_AGE, input_EXPERIENCE, input_Family_Size, input_ACCOUNT_DURATION],0)
