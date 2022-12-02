@@ -86,8 +86,26 @@ le3.classes_
 my_data['Education']=le4.fit_transform(my_data['Education'].values)
 le4.classes_
 
+X = my_data.drop(['ID', 'Risk', 'Occupation_Type'], axis=1)
+y = my_data['Risk']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 123)
+
+#adasyn = ADASYN()
+#X_train,y_train = adasyn.fit_resample(X_train,y_train)
+
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+best_xgboost_model = XGBClassifier(max_depth=5,n_estimators=250, min_child_weight=8)
+best_xgboost_model.fit(X_train, y_train)
 
 if st.button('Make Prediction'):
+    inp_Income_Type = le1.inverse_transform(np.expand_dims(inp_Income_Type, -1))
+    inp_Family_Status = le1.inverse_transform(np.expand_dims(inp_Family_Status, -1))
+    inp_House_Type = le1.inverse_transform(np.expand_dims(inp_House_Type, -1))
+    inp_Education = le1.inverse_transform(np.expand_dims(inp_Education, -1))
     inputs = np.expand_dims([inp_Gender, inp_Car, inp_Realty, input_Children, input_Salary, inp_Income_Type, inp_Education, inp_Family_Status, inp_House_Type, input_AGE, input_EXPERIENCE, input_Family_Size, input_ACCOUNT_DURATION],0)
     prediction = best_xgboost_model.predict(inputs)
     if prediction:
