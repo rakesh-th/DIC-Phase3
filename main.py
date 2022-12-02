@@ -13,7 +13,7 @@ from sklearn.preprocessing import LabelEncoder
 
 st.header("Credit Card Approval Prediction")
 st.text_input("Enter your Name: ", key="name")
-my_data = pd.read_csv("application.csv")
+my_data = pd.read_csv("final_application.csv")
 copy_data = my_data.copy()
 
 X = my_data.drop(['ID', 'Risk', 'Occupation_Type'], axis=1)
