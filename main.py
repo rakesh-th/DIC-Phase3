@@ -75,17 +75,22 @@ input_AGE = st.slider('Age of the applicant in Years:', 0.0, max(my_data["AGE"])
 input_EXPERIENCE = st.slider('Experience of the applicant in Years:', 0.0, max(my_data["EXPERIENCE"]), 7.5)
 input_ACCOUNT_DURATION = st.slider('Account Duration with the bank in Months:', 0, max(my_data["ACCOUNT_DURATION"]), 18)
 
-uploaded_file = st.file_uploader("Choose a CSV file similar to that the above dataframe") 
+uploaded_file = st.file_uploader("Upload a dataframe(CSV) similar to the above training dataframe") 
 if uploaded_file is not None:   
-    my_data = pd.read_csv(uploaded_file)   
-    my_data
+    my_data2 = pd.read_csv(uploaded_file)   
+    my_data2
 
 # predict wether the applicant will default or not not if the credit card is issued
 if st.button('Make Prediction'):
     inputs = np.expand_dims([inp_Gender, inp_Car, inp_Realty, input_Children, input_Salary, inp_Income_Type, inp_Education, inp_Family_Status, inp_House_Type, input_AGE, input_EXPERIENCE, input_Family_Size, input_ACCOUNT_DURATION],0)
     #Training the best model(XGBoost) 
-    X = my_data.drop(['ID', 'Risk', 'Occupation_Type'], axis=1)
-    y = my_data['Risk']
+    if uploaded_file is not None:
+        X = my_data2.drop(['ID', 'Risk', 'Occupation_Type'], axis=1)
+        y = my_data2['Risk']
+    else:    
+        X = my_data.drop(['ID', 'Risk', 'Occupation_Type'], axis=1)
+        y = my_data['Risk']
+        
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 123)
 
     #adasyn = ADASYN()
