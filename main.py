@@ -31,4 +31,9 @@ X_test = scaler.transform(X_test)
 best_xgboost_model = XGBClassifier(max_depth=5,n_estimators=250, min_child_weight=8)
 best_xgboost_model.fit(X_train, y_train)
 pred = best_xgboost_model.predict(X_test)
-best_xgboost_model.save_model("best_model.json")
+
+def download_model(best_xgboost_model):
+    output_model = pickle.dumps(best_xgboost_model)
+    b64 = base64.b64encode(output_model).decode()
+    href = f'<a href="data:file/output_model;base64,{b64}">Download Trained Model .pkl File</a> (right-click and save as &lt;some_name&gt;.pkl)'
+    st.markdown(href, unsafe_allow_html=True)
